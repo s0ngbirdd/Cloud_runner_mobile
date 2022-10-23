@@ -2597,6 +2597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 262a8f8cebc67be46921448b83bf655c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _groundStartTile: {fileID: 4332974487825345518, guid: 6381da94e2650734ba9190d302ed125a, type: 3}
   _groundTile: {fileID: 4332974487825345518, guid: 64727b01d80208e43884e6ab1e033fb4, type: 3}
   _groundFinishTile: {fileID: 4332974487825345518, guid: 2e7a62f49de27b84baedc88d826df79a, type: 3}
   _numberToSpawn: 7
