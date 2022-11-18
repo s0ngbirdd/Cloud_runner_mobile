@@ -7,7 +7,7 @@ public class ShowSummaryMenu : MonoBehaviour
 
     public void Update()
     {
-        if (!_popupMenu.activeSelf && FinishLevel.isFinish)
+        if (!_popupMenu.activeSelf && FindObjectOfType<FinishLevel>().IsFinish)
         {
             _popupMenu.SetActive(true);
         }

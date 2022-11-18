@@ -3,14 +3,35 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     // Public fields
-    public static int score;
-    public static int scoreBonus;
-    public static bool failBonus;
+    public int ScoreNumber {get; private set;}
+    public int ScoreBonus {get; private set;}
+    public bool IsFailBonus {get; private set;}
 
     private void Start()
     {
-        score = 0;
-        scoreBonus = 1;
-        failBonus = false;
+        ScoreNumber = 0;
+        ScoreBonus = 1;
+        IsFailBonus = false;
+    }
+
+    public void AddScore(){
+        ScoreNumber += ScoreBonus;
+    }
+
+    public void FailBonus(){
+        ScoreBonus = 1;
+        IsFailBonus = true;
+    }
+
+    public void ResetScoreBonus(){
+        ScoreBonus = 0;
+    }
+
+    public void ResetFailBonus(){
+        IsFailBonus = false;
+    }
+
+    public void AddScoreBonus(){
+        ScoreBonus++;
     }
 }

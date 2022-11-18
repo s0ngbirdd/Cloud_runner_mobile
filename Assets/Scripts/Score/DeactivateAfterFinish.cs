@@ -4,7 +4,7 @@ public class DeactivateAfterFinish : MonoBehaviour
 {
     private void Update()
     {
-        if (gameObject.activeSelf && FinishLevel.isFinish)
+        if (gameObject.activeSelf && FindObjectOfType<FinishLevel>().IsFinish)
         {
             gameObject.SetActive(false);
         }

@@ -8,10 +8,10 @@ public class RotationChange : MonoBehaviour
 
     private void Update()
     {
-        if (!FinishLevel.isFinish)
+        if (!FindObjectOfType<FinishLevel>().IsFinish)
         {
-            GetMobileInput();
-            //GetDesktopInput();
+            //GetMobileInput();
+            GetDesktopInput();
         }
     }
 

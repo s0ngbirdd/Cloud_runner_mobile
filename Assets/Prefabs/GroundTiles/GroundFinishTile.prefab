@@ -61,6 +61,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectTag: Player
+  _onTriggerStay:
+    m_PersistentCalls:
+      m_Calls: []
+  _onSubtractSpeed:
+    m_PersistentCalls:
+      m_Calls: []
+  _forwardMovement: {fileID: 0}
 --- !u!1 &7180611348983195237
 GameObject:
   m_ObjectHideFlags: 0

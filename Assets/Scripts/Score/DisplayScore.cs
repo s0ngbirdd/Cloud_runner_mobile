@@ -3,8 +3,15 @@ using UnityEngine.UI;
 
 public class DisplayScore : MonoBehaviour
 {
+    // Private fields
+    private Score _score;
+
+    private void Start() {
+        _score = FindObjectOfType<Score>();
+    }
+
     private void Update()
     {
-        GetComponent<Text>().text = Score.score.ToString();
+        GetComponent<Text>().text = _score.ScoreNumber.ToString();
     }
 }

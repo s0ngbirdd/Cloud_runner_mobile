@@ -1,13 +1,16 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class IncreaseScore : MonoBehaviour
 {
+    // Serialize fields
     [SerializeField] private Joystick _joystick;
+    [SerializeField] private UnityEvent _onActionPerFrame = new UnityEvent();
 
     private void FixedUpdate()
     {
-        GetMobileIncreaseScore();
-        //GetDesktopIncreaseScore();
+        //GetMobileIncreaseScore();
+        GetDesktopIncreaseScore();
     }
 
     // For mobile increase score
@@ -15,7 +18,7 @@ public class IncreaseScore : MonoBehaviour
     {
         if (_joystick.Horizontal.Equals(0f))
         {
-            Score.score += Score.scoreBonus;
+            _onActionPerFrame?.Invoke();
         }
     }
 
@@ -24,7 +27,7 @@ public class IncreaseScore : MonoBehaviour
     {
         if (Input.GetAxis("Horizontal").Equals(0f))
         {
-            Score.score += Score.scoreBonus;
+            _onActionPerFrame?.Invoke();
         }
     }
 }

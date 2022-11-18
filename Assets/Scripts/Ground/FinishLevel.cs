@@ -3,14 +3,21 @@ using UnityEngine;
 public class FinishLevel : MonoBehaviour
 {
     // Public fields
-    public static bool isFinish;
+    public bool IsFinish {get; private set;}
 
     // Serialize fields
     [SerializeField] private string _objectTag = "Player";
+    [SerializeField] private float _speedSubtraction = 0.1f;
+
+    // Private fields
+    private ForwardMovement _forwardMovement;
+    private Score _score;
 
     private void Start()
     {
-        isFinish = false;
+        IsFinish = false;
+        _forwardMovement = FindObjectOfType<ForwardMovement>();
+        _score = FindObjectOfType<Score>();
     }
 
     // Drop all fields values
@@ -18,12 +25,16 @@ public class FinishLevel : MonoBehaviour
     {
         if (other.gameObject.tag.Equals(_objectTag))
         {
-            if (ForwardMovement.speed > 0)
+            if (_forwardMovement.Speed > 0)
             {
-                ForwardMovement.speed -= 0.1f;
+                _forwardMovement.SubtractSpeed(_speedSubtraction);
             }
-            Score.scoreBonus = 0;
-            isFinish = true;
+            _score.ResetScoreBonus();
+            IsFinish = true;
         }
+    }
+
+    public void IsFinishReset(){
+        IsFinish = false;
     }
 }

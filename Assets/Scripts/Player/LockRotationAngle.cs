@@ -9,8 +9,8 @@ public class LockRotationAngle : MonoBehaviour
     private void Update()
     {
         // Slerp to nearest 90 angle, if no horizontal changes
-        GetMobileLockRotation();
-        //GetDesktopLockRotation();
+        //GetMobileLockRotation();
+        GetDesktopLockRotation();
     }
 
 

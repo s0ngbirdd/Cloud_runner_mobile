@@ -5,16 +5,25 @@ public class IncreaseScoreBonus : MonoBehaviour
     // Serialize fields
     [SerializeField] private string _objectTag = "Player";
 
+    // Private fields
+    private Score _score;
+    private DisplayScoreBonus _displayScoreBonus;
+
+    private void Start() {
+        _score = FindObjectOfType<Score>();
+        _displayScoreBonus = FindObjectOfType<DisplayScoreBonus>();
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag.Equals(_objectTag))
         {
-            if (!Score.failBonus)
+            if (!_score.IsFailBonus)
             {
-                Score.scoreBonus += 1;
-                DisplayScoreBonus.increaseScoreBonus = true;
+                _score.AddScoreBonus();
+                _displayScoreBonus.IncreaseScoreBonus();
             }
-            Score.failBonus = false;
+            _score.ResetFailBonus();
         }
     }
 }

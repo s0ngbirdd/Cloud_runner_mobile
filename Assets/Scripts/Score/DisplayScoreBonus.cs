@@ -5,20 +5,24 @@ using UnityEngine.UI;
 public class DisplayScoreBonus : MonoBehaviour
 {
     // Public fields
-    public static bool increaseScoreBonus;
+    public bool IsIncreaseScoreBonus {get; private set;}
+
+    // Private fields
+    private Score _score;
 
     private void Start()
     {
-        increaseScoreBonus = false;
+        IsIncreaseScoreBonus = false;
+        _score = FindObjectOfType<Score>();
     }
 
     private void Update()
     {
-        GetComponent<Text>().text = "x" + Score.scoreBonus.ToString();
-        if (increaseScoreBonus)
+        GetComponent<Text>().text = "x" + _score.ScoreBonus.ToString();
+        if (IsIncreaseScoreBonus)
         {
             ChangeTextColor();
-            increaseScoreBonus = false;
+            IsIncreaseScoreBonus = false;
         }
     }
 
@@ -33,5 +37,9 @@ public class DisplayScoreBonus : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         GetComponent<Text>().color = Color.white;
+    }
+
+    public void IncreaseScoreBonus(){
+        IsIncreaseScoreBonus = true;
     }
 }

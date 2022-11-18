@@ -3,7 +3,7 @@ using UnityEngine;
 public class ForwardMovement : MonoBehaviour
 {
     // Public fields
-    public static float speed;
+    public float Speed {get; private set;}
 
     // Private fields
     private Rigidbody _objectRigidbody;
@@ -11,12 +11,20 @@ public class ForwardMovement : MonoBehaviour
     private void Start()
     {
         _objectRigidbody = GetComponent<Rigidbody>();
-        speed = 15f;
+        Speed = 15f;
     }
 
     private void FixedUpdate()
     {
-        Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
+        Vector3 forwardMove = transform.forward * Speed * Time.fixedDeltaTime;
         _objectRigidbody.MovePosition(_objectRigidbody.position + forwardMove);
+    }
+
+    public void SpeedChange(float speed){
+        Speed = speed;
+    }
+
+    public void SubtractSpeed(float subtraction){
+        Speed -= subtraction;
     }
 }
